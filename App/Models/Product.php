@@ -1,24 +1,36 @@
 <?php
 
-//! Modèle Product
-// Pour chaque table de la BDD, on fera une classe modèle
-
-
 // espace de nom : App\Models
 namespace App\Models;
 
-// pour utiliser une autre classe, on l'appelle avec son FQCN
-// Fully qualified class name
-// Namespace + nom de classe
+// pour utiliser une autre classe, on l'appelle avec use + FQCN
 use App\Utils\DB;
 
-class Product
+
+/**
+ ** Classe Modèle qui va communiquer avec la table products de notre BDD
+ * FQCN : App\Models\Product
+ * chemin physique : App/Models/Product.php
+ */
+class Product extends CoreModel
 {
 
-    // les propriétés correspondent aux champs de la table product
-    public $id_category;
+    //* hérité de CoreModel :
+    /* protected $id */
+
+    //* hérité de CoreModel : 
+    /* public function setId($id) {
+        $this->id = $id;
+    }
+    public function getId()
+    {
+        return $this->id;
+    } */
+
+    //* les propriétés correspondent aux champs de la table product
+    public $id_category; // clé étrangère: 1 produit appartient à 1 catégorie
     public $category_name;
-    public $id_editor;
+    public $id_editor; // clé étrangère : 1 produit appartient à 1 éditeur
     public $editor_name;
     public $title;
     public $description;
@@ -78,6 +90,36 @@ class Product
         $pdoStatement = $pdoDBConnexion->query($sql);
 
         // lire et renvoyer tous les résultats sous forme de tableau d'objet
+        return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
+
+    /**
+     * Récupère tous les produits appartenant à une catégorie dont l'id est transmis
+     *
+     * @param $id_category
+     * @return array
+     * 
+     */
+    static public function productsByCategory($id_category) {
+        // on récupérer notre connexion PDO
+        $pdoDBConnexion = DB::getPdo();
+
+        // requête SQL pour récupérer toutes les lignes de notre table
+        $sql = "SELECT 
+            products.*, 
+            categories.name AS category_name, 
+            editors.name AS editor_name 
+        FROM `products` 
+        LEFT JOIN categories ON categories.id = products.id_category
+        LEFT JOIN editors ON editors.id = products.id_editor
+        WHERE id_category = {$id_category}
+        ORDER BY `title`
+        " ;
+
+        // exécuter notre requete SQL
+        $pdoStatement = $pdoDBConnexion->query($sql);
+
+        // lire tous les résultats
         return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 

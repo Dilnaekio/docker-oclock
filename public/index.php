@@ -65,6 +65,34 @@ try {
             // exécution d'une méthode du controller
             $controller->show($id_product);
             break;
+
+        case '/games':
+            // Page avec tous les jeux
+            $product = new \App\Controllers\ProductController();
+            $product->all();
+            break;
+
+        case '/categories':
+            // Page qui affiche toutes les catégories et produits associés
+            $category = new \App\Controllers\CategoryController();
+            $category->all();
+            break;
+
+        case '/category':
+            // Page qui affiche tous les produits d'une catégorie
+            $category = new \App\Controllers\CategoryController();
+            $category->detail($_GET["id"]);
+            break;
+
+        case '/editors':
+            // Page qui affiche tous les éditeurs et produits associés
+            $editor = new \App\Controllers\EditorController();
+            $editor->all();
+            break;
+
+        //todo
+        //case '/editor':
+            // Page qui affiche tous les éditeurs et produits associés
             
 
         default:

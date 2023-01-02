@@ -3,12 +3,16 @@
 // espace de nom : App\Models
 namespace App\Models;
 
-// pour utiliser une autre classe, on l'appelle avec son FQCN
-// Fully qualified class name
-// Namespace + nom de classe
+// pour utiliser une autre classe, on l'appelle avec use + FQCN
 use App\Utils\DB;
 
-class Editor
+
+/**
+ ** Classe Modèle qui va communiquer avec la table editors de notre BDD
+ * FQCN : App\Models\Editor
+ * chemin physique : App/Models/Editor.php
+ */
+class Editor extends CoreModel
 {
     public $name;
     public $presentation;

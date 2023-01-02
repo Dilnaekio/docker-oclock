@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -24,13 +24,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Tous nos jeux</a>
+                        <a class="nav-link active" aria-current="page" href="/games">Tous nos jeux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Catégories</a>
+                    <a class="nav-link" href="/categories">Catégories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Editeurs</a>
+                        <a class="nav-link" href="/editors">Editeurs</a>
                     </li>
                 </ul>
             </div>
@@ -39,43 +39,30 @@
 
 
     <div class="container mt-2 mb-4">
-        <h1><?= $product->title ?></h1>
+        <h1>Tous les jeux</h1>
 
-        <div class="row mt-5 mb-5">
-            <div class="col">
-                <img src="images/products/<?= $product->image ?>">
-            </div>
-            <div class="col">
-                <strong>Caractéristiques</strong>
-                <table class="table table-stripped">
-                    <tr>
-                        <td>Catégorie</td>
-                        <td><?= $product->category_name ?></td>
-                    </tr>
-                    <tr>
-                        <td>Editeur</td>
-                        <td><?= $product->editor_name ?></td>
-                    </tr>
-                    <tr>
-                        <td>Date de parution</td>
-                        <td><?= $product->date_release ?></td>
-                    </tr>
-                    <tr>
-                        <td>Age minimum</td>
-                        <td><?= $product->minimum_age ?></td>
-                    </tr>
-                </table>
-            </div>
+        <div class="row">
+
+            <?php foreach ($allGames as $game) : ?>
+                <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
+                    <div class="card">
+                        <img src="/images/products/<?= $game->image ; ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $game->title ; ?></h5>
+
+                            <div class="mb-2">
+                                <span class="badge bg-success"><?= $game->price ; ?> €</span>
+                            </div>
+
+                            <a href="/product?id=<?= $game->getId() ; ?>" class="btn btn-primary">Découvrir</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
         </div>
 
-        <p>
-        <?= $product->description ?>
-        </p>
-
-        <button type="button" class="btn btn-success">Ajouter au panier <?= $product->price ?>€</button>
-
     </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

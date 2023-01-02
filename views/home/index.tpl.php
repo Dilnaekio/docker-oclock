@@ -15,7 +15,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">oPlaystore</a>
+            <a class="navbar-brand" href="/">oPlaystore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                             <span class="badge bg-success"><?= $product->price ?>€</span>
                         </div>
 
-                        <a href="#" class="btn btn-primary">Découvrir</a>
+                        <a href="/product?id=<?= $product->getId() ?>" class="btn btn-primary">Découvrir</a>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     <h2>Les jeux par catégorie</h2>
                     <ul>
                         <?php foreach($allCategories as $category) : ?>
-                        <li><a href="#"><?= $category->name ?></a></li>
+                        <li><a href="/category?id=<?= $category->getId() ?>"><?= $category->name ?></a></li>
                         <?php endforeach; ?>
 
                     </ul>
@@ -89,7 +89,7 @@
                     <h2>Les éditeurs de jeu</h2>
                     <ul>
                     <?php foreach($allEditors as $editor) : ?>
-                        <li><a href="#"><?= $editor->name ?></a></li>
+                        <li><a href="/editor?id=<?= $editor->getId() ?>"><?= $editor->name ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
