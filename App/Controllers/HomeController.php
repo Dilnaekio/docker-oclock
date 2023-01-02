@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use \App\Models\{Category, Product, Editor};
+
+
 class HomeController {
 
 
@@ -13,11 +16,12 @@ class HomeController {
     public function index() {
 
         // J'utilise la méthode statique findAll() du modèle Product pour récupérer les données de tous les jeux stockées en BDD
-        $allProducts = \App\Models\Product::findAll();
+        $allProducts = Product::findAll();
 
-        $allCategories = \App\Models\Category::findAll();
+        $allCategories = Category::findAll();
 
-        $allEditors = \App\Models\Editor::findAll();
+        $allEditors = Editor::findAll();
+        //? => ces trois variables sont disponibles dans index.tpl.php
 
         // construction du chemin vers la VUE (view)
         //? https://www.php.net/manual/fr/language.constants.magic.php

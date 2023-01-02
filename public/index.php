@@ -20,19 +20,52 @@ include '../config.php';
 
 //* Gestion des requêtes
 // ! DISPATCHER
-$page = $_SERVER['REQUEST_URI'];
+
+$infoUrl =  parse_url($_SERVER['REQUEST_URI']);
+//array(2) { ["path"]=> string(8) "/product" ["query"]=> string(4) "id=5" }
+
+$page = $infoUrl['path'];
 
 try {
 
     switch ($page) {
 
         //* afficher la home
+        // http://localhost:8080/
         case "/":
             // on va instancier un controller
             $controller = new \App\Controllers\HomeController();
             // exécuter une de ses méthodes pour un affichage
             $controller->index();
             break;
+
+        //* affiche la page détails d'un produit
+        // http://localhost:8080/product?id={x}
+        // {x} devra correspondre à un des id de produits stockés en BDD
+        case "/product":
+
+            // On vérifie que nous avons bien dans l'url un paramètre id
+            if (!isset($_GET["id"])) {
+                // lève une exception si la page n'existe pas
+                throw new \Exception('Produit inexistant');
+                break;
+            }
+
+            // conversion en entier de la valeur récupérée dans le paramètre d'url idi
+            $id_product = (int)$_GET["id"];
+
+            if ( $id_product === 0) {
+                // lève une exception si la page n'existe pas
+                throw new \Exception('Produit inexistant');
+                break;
+            }
+
+            // instanciation d'un controller
+            $controller = new \App\Controllers\ProductController();
+            // exécution d'une méthode du controller
+            $controller->show($id_product);
+            break;
+            
 
         default:
             // lève une exception si la page n'existe pas
