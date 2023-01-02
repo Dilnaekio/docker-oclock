@@ -7,6 +7,10 @@ Pour ce projet, nous lancerons le serveur web intégré à PHP avec cette comman
 ```sh
 php -S 0.0.0.0:8080 -t public/
 ```
+Il faut se placer à la racine du répertoire du projet.
+
+Puis dans le navigateur, il faut utiliser l'url de sa VM en ajoutant `:8080`.
+
 
 ## Import & configuration
 

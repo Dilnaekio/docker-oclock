@@ -1,7 +1,14 @@
 <?php
 
+//! Modèle Category
+// cette classe permet de faire des requêtes sur la table category
+
+// espace de nom : App\Models
 namespace App\Models;
 
+// pour utiliser une autre classe, on l'appelle avec son FQCN
+// Fully qualified class name
+// Namespace + nom de classe
 use App\Utils\DB;
 
 class Category

@@ -1,5 +1,6 @@
 <?php
 
+// espace de nom : App\Models
 namespace App\Models;
 
 // une classe abstraite ne peut pas être instanciée

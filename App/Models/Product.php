@@ -1,11 +1,21 @@
 <?php
 
+//! Modèle Product
+// Pour chaque table de la BDD, on fera une classe modèle
+
+
+// espace de nom : App\Models
 namespace App\Models;
 
+// pour utiliser une autre classe, on l'appelle avec son FQCN
+// Fully qualified class name
+// Namespace + nom de classe
 use App\Utils\DB;
 
 class Product
 {
+
+    // les propriétés correspondent aux champs de la table product
     public $id_category;
     public $category_name;
     public $id_editor;
@@ -15,7 +25,14 @@ class Product
     public $price;
     public $date_release;
     public $minimum_age;
+    public $image;
 
+    /**
+     * Récupère les données d'un jeu
+     *
+     * @param integer $id
+     * @return Product
+     */
     static public function findById(int $id) {
         // on récupère notre connexion PDO
         $pdoDBConnexion = DB::getPdo();
@@ -38,6 +55,11 @@ class Product
         return $pdoStatement->fetch();
     }
 
+    /**
+     * Récupérer tous les jeux
+     *
+     * @return array
+     */
     static public function findAll() {
         // on récupère notre connexion PDO
         $pdoDBConnexion = DB::getPdo();
