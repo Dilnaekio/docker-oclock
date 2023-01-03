@@ -5,30 +5,30 @@
 <?php $this->start('main') ?>
 
     <div class="container mt-2 mb-4">
-        <h1><?= $product->title ?></h1>
+        <h1><?= $this->e($product->title) ?></h1>
 
         <div class="row mt-5 mb-5">
             <div class="col">
-                <img src="/images/products/<?= $product->image ?>">
+                <img src="/images/products/<?= $this->e($product->image) ?>">
             </div>
             <div class="col">
                 <strong>Caractéristiques</strong>
                 <table class="table table-stripped">
                     <tr>
                         <td>Catégorie</td>
-                        <td><?= $product->category_name ?></td>
+                        <td><?= $this->e($product->category_name) ?></td>
                     </tr>
                     <tr>
                         <td>Editeur</td>
-                        <td><?= $product->editor_name ?></td>
+                        <td><?= $this->e($product->editor_name) ?></td>
                     </tr>
                     <tr>
                         <td>Date de parution</td>
-                        <td><?= $product->date_release ?></td>
+                        <td><?= $this->e($product->date_release) ?></td>
                     </tr>
                     <tr>
                         <td>Age minimum</td>
-                        <td><?= $product->minimum_age ?></td>
+                        <td><?= $this->e($product->minimum_age) ?></td>
                     </tr>
                 </table>
             </div>
@@ -38,7 +38,7 @@
         <?= $product->description ?>
         </p>
 
-        <button type="button" class="btn btn-success">Ajouter au panier <?= $product->price ?>€</button>
+        <button type="button" class="btn btn-success">Ajouter au panier <?= $this->e($product->price) ?>€</button>
 
     </div>
 
