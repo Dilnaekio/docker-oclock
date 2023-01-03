@@ -9,7 +9,7 @@
 
         <div class="row mt-5 mb-5">
             <div class="col">
-                <img src="images/products/<?= $product->image ?>">
+                <img src="/images/products/<?= $product->image ?>">
             </div>
             <div class="col">
                 <strong>Caractéristiques</strong>

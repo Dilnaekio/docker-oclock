@@ -24,7 +24,7 @@
                                     <div class="mb-2">
                                         <span class="badge bg-success">'.$game->price.' €</span>
                                     </div>
-                                    <a href="/product?id='.$game->getId().'" class="btn btn-primary">Découvrir</a>
+                                    <a href="/product/'.$game->getId().'" class="btn btn-primary">Découvrir</a>
                                 </div>
                             </div>
                         </div>';
