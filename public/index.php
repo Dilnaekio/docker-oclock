@@ -7,11 +7,8 @@
 // php -S 0.0.0.0:8080 -t public/
 //? 0.0.0.0:8080 => public/ (sous-entendu public/index.php)
 
-//* import de la fonction qui va faire l'autoloading des fichiers de classes
-include '../inc/autoload.php';
-
-//* import de la librairie Kint pour le debug
-include '../inc/kint.phar';
+//* import de l'autoload de composer qui va faire l'autoloading des fichiers de classes de notre App mais aussi des classes des dépendances
+include '../vendor/autoload.php';
 
 //* import du fichier de configuration (BDD)
 include '../config.php';
@@ -26,6 +23,7 @@ include '../config.php';
 
 $infoUrl =  parse_url($_SERVER['REQUEST_URI']);
 //array(2) { ["path"]=> string(8) "/product" ["query"]=> string(4) "id=5" }
+d($infoUrl);
 
 $page = $infoUrl['path'];
 
