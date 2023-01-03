@@ -8,10 +8,10 @@ A l'intérieur d'une fonction ou d'une méthode, nous n'avons accès qu'aux vari
 
 ### Gestionnaire de dépendances
 
-__composer__ équivalent à __npm__
-__packagist.org__ équivalent à __npmjs.com__
-dossier __vendor__ équivalent à __node_modules__
-__composer.json__ équivalent à __package.json__
+* __composer__ équivalent à __npm__
+* __packagist.org__ équivalent à __npmjs.com__
+* dossier __vendor__ équivalent à __node_modules__
+* __composer.json__ équivalent à __package.json__
 
 #### Composer
 
