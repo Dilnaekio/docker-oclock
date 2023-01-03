@@ -77,3 +77,16 @@ $route = new Route('/product/{id}',
 $route->setMethods('GET');
 $routes->add('product', $route);
 
+
+//* liste des produits filtrés pour une catégorie
+// chemin : /category/2 
+//// ancien chemin : /category?id=2
+$route = new Route('/category/{id}',
+    [
+        '_controller' => App\Controllers\CategoryController::class,
+        '_method' => 'detail'
+    ]
+);
+$route->setMethods('GET');
+$routes->add('category', $route);
+

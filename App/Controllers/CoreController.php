@@ -1,10 +1,10 @@
 <?php
 namespace App\Controllers;
 
+use League\Plates\Engine;
+
 abstract class CoreController {
 
-
-    
     /**
      * récupère le nom du template et un tableau de données à insérer
      * toutes les classes qui hériteront de CoreController pourront utiliser cette méthode
@@ -15,21 +15,10 @@ abstract class CoreController {
      */
     protected function render($template, $data = []){
 
-        // construction du chemin vers le template
-        //? https://www.php.net/manual/fr/language.constants.magic.php
-        $templateFile = __DIR__ . "/../../views/" . $template;
+        // Create new Plates instance
+        $templates = new Engine(__DIR__ . "/../../views/");
 
-        // si le fichier n'existe pas, on lève une exception
-        if (!is_file($templateFile)) {
-            throw new \Exception('Le template n\'existe pas');
-        }
-
-        //? https://www.php.net/manual/fr/function.extract
-        // extraction des données du tableau $data
-        // cela permet d'obtenir des variables locales
-        // qui deviennent dispo dans le fichier inclut ci-dessous
-        extract($data);
-
-        include $templateFile;
+        // Render a template
+        echo $templates->render($template, $data);
     }
 }

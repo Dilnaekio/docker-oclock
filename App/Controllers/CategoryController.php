@@ -23,7 +23,9 @@ class CategoryController extends CoreController
         // charge la liste des jeux
         $data['allGames'] = Product::findAll();
 
-        $this->render('category/all.tpl.php', $data);
+        $data['title'] = "Tous les jeux triés par catégorie";
+
+        $this->render('category/all.tpl', $data);
     }
 
     /**
@@ -43,6 +45,6 @@ class CategoryController extends CoreController
         // récupération des produits de la catégorie
         $toto['allGames'] = Product::productsByCategory($id);
 
-        $this->render('category/detail.tpl.php', $toto);
+        $this->render('category/detail.tpl', $toto);
     }
 }
