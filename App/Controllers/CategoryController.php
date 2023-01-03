@@ -6,7 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 
 
-class CategoryController
+class CategoryController extends CoreController
 {
     /**
      * gère l'affichage de toutes les catégories et produits associés
@@ -18,22 +18,12 @@ class CategoryController
         $data = [];
 
         // charge la liste des catégories
-        $allCategories = Category::findAll();
+        $data['allCategories'] = Category::findAll();
 
         // charge la liste des jeux
-        $allGames = Product::findAll();
+        $data['allGames'] = Product::findAll();
 
-        // construction du chemin vers la VUE (view)
-        //? https://www.php.net/manual/fr/language.constants.magic.php
-        $templateFile = __DIR__ . "/../../views/category/all.tpl.php";
-
-        // si le fichier n'existe pas, on lève une exception
-        if (!is_file($templateFile)) {
-            throw new \Exception('Le template n\'existe pas');
-        }
-
-        // j'affiche la vue
-        include $templateFile;
+        $this->render('category/all.tpl.php', $data);
     }
 
     /**
@@ -44,24 +34,15 @@ class CategoryController
      */
     public function detail(int $id)
     {
-        $data = [];
+
+        $toto = [];
 
         // récupération de la catégorie
-        $category = Category::findById($id);
+        $toto['category'] = Category::findById($id);
 
         // récupération des produits de la catégorie
-        $allGames = Product::productsByCategory($id);
+        $toto['allGames'] = Product::productsByCategory($id);
 
-        // construction du chemin vers la VUE (view)
-        //? https://www.php.net/manual/fr/language.constants.magic.php
-        $templateFile = __DIR__ . "/../../views/category/detail.tpl.php";
-
-        // si le fichier n'existe pas, on lève une exception
-        if (!is_file($templateFile)) {
-            throw new \Exception('Le template n\'existe pas');
-        }
-
-        // j'affiche la vue
-        include $templateFile;
+        $this->render('category/detail.tpl.php', $toto);
     }
 }

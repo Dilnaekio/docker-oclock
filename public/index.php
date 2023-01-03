@@ -10,6 +10,9 @@
 //* import de la fonction qui va faire l'autoloading des fichiers de classes
 include '../inc/autoload.php';
 
+//* import de la librairie Kint pour le debug
+include '../inc/kint.phar';
+
 //* import du fichier de configuration (BDD)
 include '../config.php';
 
@@ -78,6 +81,7 @@ try {
             $category->all();
             break;
 
+        // url : http://nom-domaine/category?id=3
         case '/category':
             // Page qui affiche tous les produits d'une catégorie
             $category = new \App\Controllers\CategoryController();
@@ -95,6 +99,7 @@ try {
             // Page qui affiche tous les éditeurs et produits associés
             
 
+        // si le chemin n'est pas autorisé
         default:
             // lève une exception si la page n'existe pas
             throw new \Exception('Page inconnue');
