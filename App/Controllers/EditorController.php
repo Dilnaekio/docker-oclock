@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Product;
 use App\Models\Editor;
 
-class EditorController
+class EditorController extends CoreController
 {
     /**
      * Controller qui gère l'affichage de tous les éditeurs et produits associés
@@ -17,21 +17,13 @@ class EditorController
         $data = [];
 
         // charge la liste des editeurs
-        $allEditors = Editor::findAll();
+        $data['allEditors'] = Editor::findAll();
 
         // charge la liste des jeux
-        $allGames = Product::findAll();
+        $data['allGames'] = Product::findAll();
 
-        // construction du chemin vers la VUE (view)
-        //? https://www.php.net/manual/fr/language.constants.magic.php
-        $templateFile = __DIR__ . "/../../views/editor/all.tpl.php";
+        $data['title'] = "Tous les jeux triés par éditeur";
 
-        // si le fichier n'existe pas, on lève une exception
-        if (!is_file($templateFile)) {
-            throw new \Exception('Le template n\'existe pas');
-        }
-
-        // j'affiche la vue
-        include $templateFile;
+        $this->render('editor/all.tpl', $data);
     }
 }

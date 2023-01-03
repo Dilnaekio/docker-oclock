@@ -1,3 +1,5 @@
+# Jour 2
+
 ## PHP
 
 ### Portée des variables
@@ -32,7 +34,7 @@ Une route =>
 - 1 méthode de controller
 - 1 nom unique (optionnel)
 
-Par exemple : 
+Par exemple :
 
 - /product/list
 - GET

@@ -42,6 +42,11 @@ class CategoryController extends CoreController
         // récupération de la catégorie
         $toto['category'] = Category::findById($id);
 
+        if (!$toto['category']) {
+            // lève une exception si l'id de produit de correspond à aucun produit dans la BDD
+            throw new \Exception('Categorie inexistante');
+        }
+
         // récupération des produits de la catégorie
         $toto['allGames'] = Product::productsByCategory($id);
 
