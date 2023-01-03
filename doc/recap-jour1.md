@@ -1,4 +1,4 @@
-# Lexique
+# Jour 1
 
 
 ## PHP
@@ -17,7 +17,18 @@ https://www.php.net/manual/en/migration70.new-features.php#migration70.new-featu
 
 ### Les espaces de nom
 
-https://www.php.net/manual/fr/language.namespaces.php
+[les Namespaces ou espace de noms](https://kourou.oclock.io/ressources/fiche-recap/namespaces/)
+
+
+#### Namespace et PSR4
+
+Ce qu'on recherche à faire ? Charger les fichiers source de nos classes sans avoir besoin de faire de require pour chacun d'eux.
+Un simple "use" doit permettre de charger seulement la source nécessaire, et pas toutes les sources par défaut.
+
+La solution :
+
+[PSR4 : Autoloader](https://www.php-fig.org/psr/psr-4/)
+
 
 
 

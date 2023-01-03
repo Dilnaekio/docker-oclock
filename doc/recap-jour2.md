@@ -22,6 +22,11 @@ Ce que nous avons fait quand nous avons utiliser composer en tant que gestionnai
 3. ajout de autoload de nos propres classes dans `composer.json` : https://getcomposer.org/doc/01-basic-usage.md#autoloading
 4. à la racine du projet, dans le terminal : `composer dump-autoload` pour regénérer le fichier autoload.php
 
+#### namespace, PSR 4 et Composer
+
+- [PHP spl_autoload_register()](https://www.php.net/manual/fr/function.spl-autoload-register)
+- [Doc Composer](https://getcomposer.org/doc/04-schema.md#autoload)
+
 
 ## Les routes
 
@@ -103,3 +108,20 @@ Un seul point d'entrée :
 - ça va être plus simple à maintenir, puisque les URI accessibles sont toutes listées au même endroit
 - associées aux URI accessibles, les méthodes de controller : le code est aussi très facile à retrouver
 
+## Moteurs de template
+
+### pourquoi ?
+
+- maintenance plus efficiente
+- plus de controle, permet la sécurisation des données affichées         (injection de code)
+- réutilisation de morceaux de template (nesting)
+- un système de layout, theming facilité
+
+### quelles fonctionnalités ?
+
+- Layout avec des sections
+- Des fonctions utilitaires
+- Boucles
+- Conditions
+- Nesting : insertion de template partiel
+- Sécurisation des affichages
