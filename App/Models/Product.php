@@ -151,6 +151,46 @@ class Product extends CoreModel
         return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 
+    static public function findAllByYear() {
+
+        // on récupérer notre connexion PDO
+        $pdoDBConnexion = DB::getPdo();
+
+        // requête SQL pour récupérer toutes les lignes de notre table
+        $sql = "SELECT 
+            products.*, 
+            YEAR(products.date_release) AS year,
+            categories.name AS category_name, 
+            editors.name AS editor_name 
+        FROM `products` 
+        LEFT JOIN categories ON categories.id = products.id_category
+        LEFT JOIN editors ON editors.id = products.id_editor
+        ORDER BY YEAR(date_release) DESC, `title`" ;
+
+        // exécuter notre requete SQL
+        $pdoStatement = $pdoDBConnexion->query($sql);
+
+        // lit tous les résultats
+        $games = $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
+
+        // tableau qui stockera tous les jeux par année
+        $gamesByYear = [];
+
+        // répartie les jeux par années
+        foreach ($games as $game) {
+            // si la clé avec l'année n'existe pas, 
+            // on la déclare avec un tableau vide pour y ajouter les jeux
+            if (!isset($gamesByYear[$game->year])) {
+                $gamesByYear[$game->year] = [];
+            }
+
+            // Ajout du jeu dans l'année (année de sortie)
+            $gamesByYear[$game->year][] = $game;
+        }
+
+        return $gamesByYear;
+    }
+
     public function save() {
         //todo
     }

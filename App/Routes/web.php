@@ -102,4 +102,11 @@ $route = new Route('/editor/{id}',
 $route->setMethods('GET');
 $routes->add('editor', $route);
 
+//* ajout d'une route : Affichage des produits par année
+$route = new Route('/games/order-by/year', [
+    '_controller' => App\Controllers\ProductController::class, 
+    '_method' => 'gamesOrderByYear'
+]);
+$routes->add('games-orderby-year', $route);
+
 

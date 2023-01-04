@@ -46,4 +46,18 @@ class ProductController extends CoreController
 
         $this->render('product/all.tpl', $data);
     }
+
+    /**
+     * Controller qui gère l'affichage des produits par année
+     *
+     * @return void
+     */
+    public function gamesOrderByYear() {
+
+        $data['gamesOrderByYear'] =  \App\Models\Product::findAllByYear();
+        $data['title'] = "Tous les jeux triés par année de parution";
+
+        // affichage du template
+        $this->render('product/games-orderby-year.tpl', $data);
+    }
 }

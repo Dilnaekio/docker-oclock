@@ -23,14 +23,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/games">Tous nos jeux</a>
+                    <li class="nav-item">
+                        <a class="nav-link<?= ($_SERVER['REQUEST_URI'] === '/games')? ' active" aria-current="page':'' ?>" href="/games">Tous nos jeux</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/categories">Catégories</a>
+                        <a class="nav-link<?= ($_SERVER['REQUEST_URI'] === '/categories')? ' active" aria-current="page':'' ?>" href="/categories">Catégories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/editors">Editeurs</a>
+                        <a class="nav-link<?= ($_SERVER['REQUEST_URI'] === '/editors')? ' active" aria-current="page':'' ?>" href="/editors">Editeurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link<?= ($_SERVER['REQUEST_URI'] === '/games/order-by/year')? ' active" aria-current="page':'' ?>" href="/games/order-by/year">Jeux par année</a>
                     </li>
                 </ul>
             </div>

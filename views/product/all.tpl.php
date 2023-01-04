@@ -7,6 +7,8 @@
     <div class="container mt-2 mb-4">
         <h1>Tous les jeux</h1>
 
+        <a href="/games/order-by/year">trier par année</a>
+
         <div class="row">
 
             <?php foreach ($allGames as $game) : ?>
