@@ -17,18 +17,11 @@
                 <?php foreach ($allGames as $game) : ?>
                     <?php if ($game->id_category === $category->getId()) :
 
-                        $html .= '<div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="/images/products/'.$game->image.'" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">'.$game->title.'</h5>
-                                    <div class="mb-2">
-                                        <span class="badge bg-success">'.$game->price.' €</span>
-                                    </div>
-                                    <a href="/product/'.$game->getId().'" class="btn btn-primary">Découvrir</a>
-                                </div>
-                            </div>
-                        </div>';
+                        // on met en mémoire tampon tous les affichages
+                        ob_start();
+                        $this->insert('partials/_game-card.tpl', ['game' => $game]);
+                        // on récupère ce qu'il y a dans la mémoire tampon, on le stocke dans $html et on vide la mémoire tampon
+                        $html .= ob_get_clean();
                     endif; ?>
                 <?php endforeach; ?>
 

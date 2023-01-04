@@ -17,20 +17,7 @@
 
         <?php foreach ($allProducts as $product) : ?>
 
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3 mb-4">
-                <div class="card">
-                    <img src="images/products/<?= $product->image ?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $product->title ?></h5>
-
-                        <div class="mb-2">
-                            <span class="badge bg-success"><?= $product->price ?>€</span>
-                        </div>
-
-                        <a href="/product/<?= $product->getId() ?>" class="btn btn-primary">Découvrir</a>
-                    </div>
-                </div>
-            </div>
+            <?php $this->insert('partials/_game-card.tpl', ['game' => $game]); ?>
 
         <?php endforeach; ?>
 
