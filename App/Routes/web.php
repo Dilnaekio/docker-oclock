@@ -90,3 +90,5 @@ $route = new Route('/category/{id}',
 $route->setMethods('GET');
 $routes->add('category', $route);
 
+// TODO route : /editor/{id}
+
