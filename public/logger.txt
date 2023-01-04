@@ -1,0 +1,41 @@
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Exécution de la méthode detail du controller App\Controllers\CategoryController
+2023-01-04: Appel du templatecategory/detail.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Exécution de la méthode index du controller App\Controllers\HomeController
+2023-01-04: Appel du templatehome/index.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Exécution de la méthode show du controller App\Controllers\ProductController
+2023-01-04: Appel du templateproduct/show.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Exécution de la méthode all du controller App\Controllers\CategoryController
+2023-01-04: Appel du templatecategory/all.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Chemin de la Req HTTP : /
+2023-01-04: Exécution de la méthode index du controller App\Controllers\HomeController
+2023-01-04: Appel du templatehome/index.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Chemin de la Req HTTP : /product/9
+2023-01-04: Exécution de la méthode show du controller App\Controllers\ProductController
+2023-01-04: Appel du templateproduct/show.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Chemin de la Req HTTP : /product/9
+2023-01-04: Exécution de la méthode show du controller App\Controllers\ProductController
+2023-01-04: Appel du templateproduct/show.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Chemin de la Req HTTP : /
+2023-01-04: Exécution de la méthode index du controller App\Controllers\HomeController
+2023-01-04: Appel du templatehome/index.tpl
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: le président dit son nom : Je m'appelle Guillaume
+2023-01-04: Chemin de la Req HTTP : /categories
+2023-01-04: Exécution de la méthode all du controller App\Controllers\CategoryController
+2023-01-04: Appel du templatecategory/all.tpl

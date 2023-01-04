@@ -13,17 +13,19 @@ include '../vendor/autoload.php';
 //* import du fichier de configuration (BDD)
 include '../config.php';
 
+//* Test de notre classe Logger qui hérite de la classe Singleton
+//import de logger
+use App\Utils\Loggerbis;
+
 
 //* Test de notre classe President Singleton
 use App\Utils\President;
-$president = President::getInstance("Guillaume");
-d($president);
-$president->sayHisName();
-$president2 = President::getInstance("Guillermo");
-d($president2);
-$president2->sayHisName();
 
-die;
+////$president0 = new President("Magali"); //erreur fatale
+$president = President::getInstance("Guillaume");
+Loggerbis::log("le président dit son nom : ".$president->sayHisName());
+$president2 = President::getInstance("Guillermo");
+Loggerbis::log("le président dit son nom : ".$president2->sayHisName());
 
 
 
@@ -50,10 +52,14 @@ try {
     
     // 3. on donne à l'urlMatcher le chemin + param de la requête HTTP courant
     $result = $matcher->match($_SERVER['REQUEST_URI']);
+
+    Loggerbis::log("Chemin de la Req HTTP : " . $_SERVER['REQUEST_URI']);
     
     // 4. on stocke des chaines de caractères dans ces deux variables
     $controllerName = $result['_controller']; 
     $controllerMethod = $result['_method'];
+
+    Loggerbis::log("Exécution de la méthode {$controllerMethod} du controller {$controllerName}");
 
     // 5. on instancie alors le controleur correspondant 
     $controllerInstance = new $controllerName();

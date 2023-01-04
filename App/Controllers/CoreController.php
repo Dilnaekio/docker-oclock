@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use League\Plates\Engine;
+use App\Utils\Loggerbis;
 
 abstract class CoreController {
 
@@ -17,6 +18,8 @@ abstract class CoreController {
 
         // Create new Plates instance
         $templates = new Engine(__DIR__ . "/../../views/");
+
+        Loggerbis::log("Appel du template" . $template);
 
         // Render a template
         echo $templates->render($template, $data);
