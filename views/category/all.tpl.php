@@ -1,5 +1,6 @@
 <!-- ce template hérite du layout principal -->
 <?php $this->layout('main-layout.tpl', ['title' => $title]) ?>
+<!-- Ce template doit transmettre la valeur stockée dans $title au layout -->
 
 <!-- début de la section "main" -->
 <?php $this->start('main') ?>

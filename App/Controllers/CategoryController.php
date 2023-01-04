@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Editor;
 
 
 class CategoryController extends CoreController
@@ -49,6 +50,10 @@ class CategoryController extends CoreController
 
         // récupération des produits de la catégorie
         $toto['allGames'] = Product::productsByCategory($id);
+
+        $toto['allCategories'] = Category::findAll();
+
+        $toto['allEditors'] = Editor::findAll();
 
         $this->render('category/detail.tpl', $toto);
     }

@@ -34,4 +34,6 @@
         </div>
     </div>
 
+    <?php $this->insert('partials/_footer-links.tpl', ["allEditors" => $allEditors, "allCategories" => $allCategories]) ?>
+
 <?php $this->stop() ?>
