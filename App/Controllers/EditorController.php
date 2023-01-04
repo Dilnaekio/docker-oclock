@@ -26,4 +26,25 @@ class EditorController extends CoreController
 
         $this->render('editor/all.tpl', $data);
     }
+
+    /**
+     * gère l'affichage des produits associés à un éditeur
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function detail(int $id) {
+        $data = [];
+
+        // récupération de la catégorie
+        $data['editor'] = Editor::findById($id);
+
+        // récupération des produits de la catégorie
+        $data['games'] = Product::productsByEditor($id);
+
+        $data['title'] = "Tous les jeux de l'éditeur " . $data['editor']->name;
+
+        // affichage du template
+        $this->render('editor/detail.tpl', $data);
+    }
 }

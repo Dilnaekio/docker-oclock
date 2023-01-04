@@ -123,6 +123,34 @@ class Product extends CoreModel
         return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 
+    /**
+     * Récupère tous les produits appartenant à un éditeur dont l'id est transmis
+     *
+     * @param $id_editor
+     */
+    static public function productsByEditor($id_editor) {
+        // on récupérer notre connexion PDO
+        $pdoDBConnexion = DB::getPdo();
+
+        // requête SQL pour récupérer toutes les lignes de notre table
+        $sql = "SELECT 
+            products.*, 
+            categories.name AS category_name, 
+            editors.name AS editor_name 
+        FROM `products` 
+        LEFT JOIN categories ON categories.id = products.id_category
+        LEFT JOIN editors ON editors.id = products.id_editor
+        WHERE id_editor = {$id_editor}
+        ORDER BY `title`
+        " ;
+
+        // exécuter notre requete SQL
+        $pdoStatement = $pdoDBConnexion->query($sql);
+
+        // lire tous les résultats
+        return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
+    }
+
     public function save() {
         //todo
     }

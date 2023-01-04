@@ -90,5 +90,16 @@ $route = new Route('/category/{id}',
 $route->setMethods('GET');
 $routes->add('category', $route);
 
-// TODO route : /editor/{id}
+//* liste des produits associés à un éditeur
+// chemin : /editor/2 
+//// ancien chemin : /editor?id=2
+$route = new Route('/editor/{id}',
+    [
+        '_controller' => App\Controllers\EditorController::class,
+        '_method' => 'detail'
+    ]
+);
+$route->setMethods('GET');
+$routes->add('editor', $route);
+
 
