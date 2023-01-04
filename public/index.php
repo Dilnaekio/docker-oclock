@@ -13,6 +13,22 @@ include '../vendor/autoload.php';
 //* import du fichier de configuration (BDD)
 include '../config.php';
 
+
+//* Test de notre classe President Singleton
+use App\Utils\President;
+$president = President::getInstance("Guillaume");
+d($president);
+$president->sayHisName();
+$president2 = President::getInstance("Guillermo");
+d($president2);
+$president2->sayHisName();
+
+die;
+
+
+
+
+
 //* Utilisation de Symfony Routing pour gérer les requêtes HTTP entrantes
 
 // import de la collection des routes
@@ -43,22 +59,6 @@ try {
     $controllerInstance = new $controllerName();
     // 6. on exécute la méthode correspondante
     $controllerInstance->$controllerMethod($result['id'] ?? null);
-
-
-    ### Null Coalescent
-
-   // $result['id'] ?? null
-
-   // équivaut à :
-
-   /*
-    if (isset($result['id'])) {
-        return $result['id]
-    }
-    else {
-        return null
-    }
-   */
 
 }
 catch (\Exception $e) {

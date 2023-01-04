@@ -15,6 +15,21 @@ https://www.php.net/manual/en/function.parse-url
 
 https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op
 
+    ### Null Coalescent
+
+   // $result['id'] ?? null
+
+   // équivaut à :
+
+   /*
+    if (isset($result['id'])) {
+        return $result['id]
+    }
+    else {
+        return null
+    }
+   */
+
 ### Les espaces de nom
 
 [les Namespaces ou espace de noms](https://kourou.oclock.io/ressources/fiche-recap/namespaces/)
