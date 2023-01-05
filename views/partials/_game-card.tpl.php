@@ -8,7 +8,7 @@
                 <span class="badge bg-success"><?= $game->price; ?> €</span>
             </div>
 
-            <a href="/product/<?= $game->getId(); ?>" class="btn btn-primary">Découvrir</a>
+            <a href="<?= $urlGenerator->generate('product', ['id' => $game->getId()] ); ?>" class="btn btn-primary">Découvrir</a>
         </div>
     </div>
 </div>

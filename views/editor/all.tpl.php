@@ -19,7 +19,7 @@
                     <?php if ($game->id_editor === $editor->getId()) :
                         $noGameForThisEditor = false;
                     ?>
-                        <?php $this->insert('partials/_game-card.tpl', ['game' => $game]); ?>
+                        <?php $this->insert('partials/_game-card.tpl', ['game' => $game, 'urlGenerator' => $urlGenerator]); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
 

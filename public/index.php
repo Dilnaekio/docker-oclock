@@ -27,10 +27,6 @@ $president = President::getInstance("Guillaume");
 $president2 = President::getInstance("Guillermo");
 //Loggerbis::log("le président dit son nom : ".$president2->sayHisName());
 
-
-
-
-
 //* Utilisation de Symfony Routing pour gérer les requêtes HTTP entrantes
 
 // import de la collection des routes
@@ -46,24 +42,27 @@ use Symfony\Component\Routing\Generator\UrlGenerator; // permet de créer des ur
 // équivaut à la récupération du $_SERVER['REQUEST_URI']
 $context = new RequestContext();
 
+//* 1bis. Permet de générer les urls pour les templates/views/vues
+$urlGenerator = new UrlGenerator($routes, $context);
+
 try {
-    // 2. vérifier que la req HTTP matche avec nos routes prédéfinies (dans web.php)
+    //* 2. vérifier que la req HTTP matche avec nos routes prédéfinies (dans web.php)
     $matcher = new UrlMatcher($routes, $context);
     
-    // 3. on donne à l'urlMatcher le chemin + param de la requête HTTP courant
+    //* 3. on donne à l'urlMatcher le chemin + param de la requête HTTP courant
     $result = $matcher->match($_SERVER['REQUEST_URI']);
 
     //Loggerbis::log("Chemin de la Req HTTP : " . $_SERVER['REQUEST_URI']);
     
-    // 4. on stocke des chaines de caractères dans ces deux variables
+    //* 4. on stocke des chaines de caractères dans ces deux variables
     $controllerName = $result['_controller']; 
     $controllerMethod = $result['_method'];
 
     //Loggerbis::log("Exécution de la méthode {$controllerMethod} du controller {$controllerName}");
 
-    // 5. on instancie alors le controleur correspondant 
+    //* 5. on instancie alors le controleur correspondant 
     $controllerInstance = new $controllerName();
-    // 6. on exécute la méthode correspondante
+    //* 6. on exécute la méthode correspondante
     $controllerInstance->$controllerMethod($result['id'] ?? null);
 
 }

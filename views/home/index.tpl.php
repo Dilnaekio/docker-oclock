@@ -15,15 +15,15 @@
 
         <div class="row">
 
-        <?php foreach ($allProducts as $product) : ?>
+        <?php foreach ($allProducts as $game) : ?>
 
-            <?php $this->insert('partials/_game-card.tpl', ['game' => $game]); ?>
+            <?php $this->insert('partials/_game-card.tpl', ['game' => $game, 'urlGenerator' => $urlGenerator]); ?>
 
         <?php endforeach; ?>
 
         </div>
 
-        <?php $this->insert('partials/_footer-links.tpl', ["allEditors" => $allEditors, "allCategories" => $allCategories]) ?>
+        <?php $this->insert('partials/_footer-links.tpl', ["allEditors" => $allEditors, "allCategories" => $allCategories, 'urlGenerator' => $urlGenerator]) ?>
 
     </div>
     

@@ -14,7 +14,7 @@
         <div class="row">
 
             <?php foreach ($games as $game) : ?>
-                <?php $this->insert('partials/_game-card.tpl', ['game' => $game]); ?>
+                <?php $this->insert('partials/_game-card.tpl', ['game' => $game, 'urlGenerator' => $urlGenerator]); ?>
             <?php endforeach; ?>
 
 

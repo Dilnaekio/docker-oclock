@@ -11,7 +11,7 @@
         <div class="row">
 
             <?php foreach ($allGames as $game) : ?>
-                <?php $this->insert('partials/_game-card.tpl', ['game' => $game]); ?>
+                <?php $this->insert('partials/_game-card.tpl', ['game' => $game, 'urlGenerator' => $urlGenerator]); ?>
             <?php endforeach; ?>
 
             <?php if (count($allGames) == 0) : ?>
@@ -21,6 +21,6 @@
         </div>
     </div>
 
-    <?php $this->insert('partials/_footer-links.tpl', ["allEditors" => $allEditors, "allCategories" => $allCategories]) ?>
+    <?php $this->insert('partials/_footer-links.tpl', ["allEditors" => $allEditors, "allCategories" => $allCategories, 'urlGenerator' => $urlGenerator]) ?>
 
 <?php $this->stop() ?>

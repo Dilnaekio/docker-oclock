@@ -10,7 +10,7 @@
 
         <?php foreach ($games as $game) : ?>
             <!-- insertion d'un fragment de HTML avec transmission de donnée -->
-            <?php $this->insert('partials/_game-card.tpl', ['game' => $game]) ?>
+            <?php $this->insert('partials/_game-card.tpl', ['game' => $game, 'urlGenerator' => $urlGenerator]) ?>
         <?php endforeach; ?>
 
 

@@ -16,6 +16,11 @@ abstract class CoreController {
      */
     protected function render($template, $data = []){
 
+        // En PHP les variables crées en dehors d'une méthode ou d'une fonction ne sont pas accessibles
+        // Pour empêcher ça, on peut utiliser le mot-clé global
+        global $urlGenerator;
+        $data['urlGenerator'] = $urlGenerator;
+
         // Create new Plates instance
         $templates = new Engine(__DIR__ . "/../../views/");
 
