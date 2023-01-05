@@ -151,6 +151,11 @@ class Product extends CoreModel
         return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 
+    /**
+     * renvoie tous les jeux mais triés par année
+     *
+     * @return array
+     */
     static public function findAllByYear() {
 
         // on récupérer notre connexion PDO
@@ -189,6 +194,41 @@ class Product extends CoreModel
         }
 
         return $gamesByYear;
+    }
+
+    /**
+     * renvoie une liste de jeu filtrée par une chaine de recherche
+     * La chaine est comparée aux colonnes : 
+     *   products.title
+     *   categories.name
+     *   editors.name
+     *
+     * @param string $search
+     * @return void
+     */
+    static public function search(string $search) {
+        // on récupérer notre connexion PDO
+        $pdoDBConnexion = DB::getPdo();
+
+
+        // requête SQL pour récupérer toutes les lignes de notre table
+        $sql = "SELECT 
+            products.*, 
+            categories.name AS category_name, 
+            editors.name AS editor_name 
+        FROM `products` 
+        LEFT JOIN categories ON categories.id = products.id_category
+        LEFT JOIN editors ON editors.id = products.id_editor
+        WHERE title like :search OR categories.name like :search OR editors.name like :search
+        ORDER BY `title`
+        " ;
+
+        // préparation de la requête
+        $pdoStatement = $pdoDBConnexion->prepare($sql);
+        $pdoStatement->execute([":search" => "%" . $search . "%"]);
+
+        // lire tous les résultats
+        return $pdoStatement->fetchAll(\PDO::FETCH_CLASS, self::class);
     }
 
     public function save() {

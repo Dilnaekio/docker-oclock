@@ -109,4 +109,11 @@ $route = new Route('/games/order-by/year', [
 ]);
 $routes->add('games-orderby-year', $route);
 
+//* ajout d'une route : action du formulaire de recherche
+$route = new Route('/search', [
+    '_controller' => App\Controllers\ProductController::class, 
+    '_method' => 'search'
+]);
+$routes->add('games-search', $route);
+
 

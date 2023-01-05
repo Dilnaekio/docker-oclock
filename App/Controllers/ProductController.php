@@ -60,4 +60,26 @@ class ProductController extends CoreController
         // affichage du template
         $this->render('product/games-orderby-year.tpl', $data);
     }
+
+    /**
+     * gère l'affichage des résultats de recherche
+     *
+     * @return void
+     */
+    public function search() {
+        $search = filter_input(INPUT_POST, 'search');
+        $search = htmlspecialchars($search);
+
+        // récupération du produit
+        $products = \App\Models\Product::search($search);
+
+        $data = [
+            "games" => $products,
+            "controller" => $this,
+            "search" => $search
+        ];
+
+        // affichage du template
+        $this->render('product/search.tpl', $data);
+    }
 }

@@ -36,6 +36,10 @@
                         <a class="nav-link<?= ($_SERVER['REQUEST_URI'] === '/games/order-by/year')? ' active" aria-current="page':'' ?>" href="/games/order-by/year">Jeux par année</a>
                     </li>
                 </ul>
+                <form class="d-flex" action="/search" method="POST">
+                    <input class="form-control me-2" name="search" type="search" placeholder="rechercher un jeu video" value="<?= $search ?? '' ?>" aria-label="rechercher un jeu video">
+                    <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                </form>
             </div>
         </div>
     </nav>
