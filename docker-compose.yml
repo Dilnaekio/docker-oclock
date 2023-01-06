@@ -1,0 +1,36 @@
+version: "3"
+services:
+  web:
+    build: apache
+    ports:
+      - 1234:80
+    depends_on:
+      - db
+      - composer
+    volumes:
+      - ./apache/vhosts/:/etc/apache2/sites-available/
+      - ./:/var/www/html/
+  db:
+    image: "mariadb"
+    environment:
+      MARIADB_ROOT_PASSWORD: "secret"
+      MARIADB_USER: "oplaystore"
+      MARIADB_PASSWORD: "testest"
+      MARIADB_DATABASE: "oplaystore"
+    volumes:
+      - ./doc/oPlaystore.sql:/docker-entrypoint-initdb.d/import.sql
+  phpmyadmin:
+    image: "phpmyadmin"
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+
+  composer:
+    image: "composer"
+    volumes:
+      - ./:/app
+    command: ["composer", "install"]

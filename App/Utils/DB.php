@@ -4,6 +4,7 @@ namespace App\Utils;
 
 class DB
 {
+    public static $host;
     static private $pdoDBConnexion;
     static public $user;
     static public $password;
@@ -25,7 +26,7 @@ class DB
 
 
         // DSN
-        $dataSourceName = "mysql:dbname=" . self::$database . ";host=localhost;charset=UTF8";
+        $dataSourceName = "mysql:dbname=" . self::$database . ";host=". self::$host .";charset=UTF8";
 
         // nom d'utilisateur qui a accès à la BDD
         $user = self::$user;
